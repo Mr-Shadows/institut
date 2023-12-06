@@ -1,0 +1,3 @@
+C:/Users/Oleg/Desktop/Folder/vuz/kurs 2 semestr 1/forGitHub/institut/siaod/task2/cmake-build-debug/CMakeFiles/task2.dir
+C:/Users/Oleg/Desktop/Folder/vuz/kurs 2 semestr 1/forGitHub/institut/siaod/task2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Oleg/Desktop/Folder/vuz/kurs 2 semestr 1/forGitHub/institut/siaod/task2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
