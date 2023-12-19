@@ -1,4 +1,4 @@
-package RestaurantMenu;
+package RestaurantMenu.Cafe;
 
 public class InternetOrder implements Order // Интернет-заказы в ресторане
 {
@@ -25,17 +25,6 @@ public class InternetOrder implements Order // Интернет-заказы в 
         }
         return true;
     }
-    /*private boolean searchLink(String name) // Побочный метод
-    {
-        ListNode current = head;
-        while (current != null)
-        {
-            if (name.equals(current.item.getName()))
-                return true;
-            current = current.next;
-        }
-        return false;
-    }*/
     public boolean remove(String name) // Метод удаления позиции в заказе, удаляет последний элемент в списке заказов
     {
         counter--;

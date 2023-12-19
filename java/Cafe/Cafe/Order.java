@@ -1,4 +1,4 @@
-package RestaurantMenu;
+package RestaurantMenu.Cafe;
 
 public interface Order // Интерфейс, в котором содержатся переопределяемые в классах RestaurantOrder и InternetOrder методы
 {

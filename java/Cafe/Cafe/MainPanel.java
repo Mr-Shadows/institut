@@ -1,4 +1,5 @@
-package RestaurantMenu;
+package RestaurantMenu.Cafe;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -6,7 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.EventObject;
 
-public class MainPanel
+public class   MainPanel
 {
     private final Item[] items = new Item[15];
     public InternetOrder internetOrder;
@@ -21,13 +22,13 @@ public class MainPanel
         items[5] = new Dish("Креветки в кляре", "Сытное мясо в хрустящей панировке", 100);
         items[6] = new Dish("Роллы", "Блюдо из риса, уксуса и морепродуктов", 1050);
         items[7] = new Dish("Пицца", "Итальянское блюдо с начинкой сверху", 1500);
-        items[8] = new Dish("Чизбургер", "Гамбургер с сыром", 600);
+        items[8] = new Dish("ЧЫзбургер", "Гамбургер с сыром", 600);
         items[9] = new Drink("Эспрессо", "Бодрящий кофе с сахаром", 200);
-        items[10] = new Drink("Фанта", "Газированный напиток со вкусом апельсина", 175);
-        items[11] = new Drink("Coca-Cola", "Газированный безалкогольный напиток", 175);
-        items[12] = new Drink("Чай холодный", "Прохладный, вкусный зеленый чай", 175);
+        items[10] = new Drink("Добрый Апельсин", "Газированный напиток со вкусом апельсина", 175);
+        items[11] = new Drink("Добрый Кола", "Газированный безалкогольный напиток", 175);
+        items[12] = new Drink("Чай", "Прохладный, вкусный зеленый чай", 175);
         items[13] = new Drink("Бурбон", "Сильнокрепкий алкогольный напиток", 1500);
-        items[14] = new Drink("Текила", "Крепкий алкогольный напиток", 850);
+        items[14] = new Drink("ВЫЫЫЫСКИ", "Моё любимое", 850);
     }
     MainPanel()
     {
@@ -54,7 +55,7 @@ public class MainPanel
 
         JPanel panel1 = new JPanel();
         JLabel label1 = new JLabel("Главное меню");
-        label1.setFont(new Font("Calibri", Font.BOLD, 30));
+        label1.setFont(new Font("Times New Roman", Font.BOLD, 30));
         panel1.add(label1);
 
         JPanel panel2 = new JPanel();
@@ -86,7 +87,7 @@ public class MainPanel
         panel3.setLayout(new BoxLayout(panel3, BoxLayout.Y_AXIS));
         JLabel label2 = new JLabel("Оформить новый заказ?");
         label2.setAlignmentX(Component.CENTER_ALIGNMENT);
-        label2.setFont(new Font("Calibri", Font.BOLD, 30));
+        label2.setFont(new Font("Times New Roman", Font.BOLD, 30));
         JPanel Btpanel = new JPanel();
         JButton button5 = new JButton("Да");
         JButton button6 = new JButton("Нет");
@@ -101,7 +102,7 @@ public class MainPanel
         JPanel panel4 = new JPanel(new BorderLayout());
         JLabel label3 = new JLabel("<html>В нашем ресторане вы сможете попробовать изысканные блюда из разных<br>стран всего мира. Наши шеф-повара имеют многолетний стаж работы.</html>");
         label3.setHorizontalAlignment(SwingConstants.CENTER);
-        label3.setFont(new Font("Calibri", Font.BOLD, 20));
+        label3.setFont(new Font("Times New Roman", Font.BOLD, 20));
         JPanel pn1 = new JPanel();
         pn1.add(label3);
         JButton button7 = new JButton("Назад");
@@ -131,7 +132,7 @@ public class MainPanel
 
         JPanel panel5 = new JPanel(new BorderLayout());
         JLabel label4 = new JLabel("Меню состоит из 15 позиций, и содержит различные блюда всего мира");
-        label4.setFont(new Font("Calibri", Font.BOLD, 20));
+        label4.setFont(new Font("Times New Roman", Font.BOLD, 20));
         label4.setOpaque(true);
         label4.setBackground(Color.WHITE);
         JPanel addpanel = new JPanel();
@@ -164,7 +165,7 @@ public class MainPanel
         JLabel label5 = new JLabel("Корзина пока пуста");
         emptyPanel.add(label5);
         emptyPanel.setVisible(false);
-        label5.setFont(new Font("Calibri", Font.BOLD, 30));
+        label5.setFont(new Font("Times New Roman", Font.BOLD, 30));
         JPanel backpanel1 = new JPanel(new FlowLayout());
         JButton backbutton1 = new JButton("Назад");
         JButton button8 = new JButton("Оплатить заказ");
@@ -198,7 +199,6 @@ public class MainPanel
                     rowData[2] = table1.getValueAt(selectedRow, 2);
                     internetOrder.add(items[selectedRow]);
                     model.addRow(rowData);
-                    //System.out.println(items[selectedRow].getName());
                 }
             }
         });
@@ -262,7 +262,7 @@ public class MainPanel
 
                 frame.setVisible(true); // Делает видимым само окно
                 JLabel label = new JLabel("Действительно выйти?");
-                label.setFont(new Font("Calibri", Font.ITALIC, 25));
+                label.setFont(new Font("Times New Roman", Font.ITALIC, 25));
                 frame.add(label, BorderLayout.NORTH);
                 JPanel panel = new JPanel(new FlowLayout());
                 JButton button1 = new JButton("Да");
@@ -336,7 +336,7 @@ public class MainPanel
                 JPanel mainPN = new JPanel();
                 JPanel mainPanel1 = new JPanel(new BorderLayout());
                 JLabel label1 = new JLabel("Итоговая стоимость заказа: " + internetOrder.priceTotal() + " \u20BD");
-                label1.setFont(new Font("Calibri", Font.ITALIC, 30));
+                label1.setFont(new Font("Times New Roman", Font.ITALIC, 30));
                 JPanel panel1 = new JPanel(new FlowLayout());
                 JButton button1 = new JButton("Оплатить");
                 JButton button2 = new JButton("Закрыть");
@@ -354,7 +354,7 @@ public class MainPanel
                     mainPanel1.setVisible(false);
                     panel2.setVisible(true);
                 }
-                label3.setFont(new Font("Calibri", Font.BOLD, 30));
+                label3.setFont(new Font("Times New Roman", Font.BOLD, 30));
                 button1.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -399,7 +399,7 @@ public class MainPanel
                 JPanel mainpanel2 = new JPanel(new FlowLayout());
                 JLabel label1 = new JLabel("Заказ удалён");
                 label1.setText((internetOrder == null) ? "Заказ не оформлен" : "Успешно удалено");
-                label1.setFont(new Font("Calibri", Font.BOLD, 20));
+                label1.setFont(new Font("Times New Roman", Font.BOLD, 20));
                 DefaultTableModel model1 = (DefaultTableModel) table2.getModel();
                 model1.setRowCount(0);
                 internetOrder = null;
@@ -435,7 +435,7 @@ public class MainPanel
 
                 JPanel panel1 = new JPanel();
                 JLabel label1 = new JLabel("Введите пароль: ");
-                label1.setFont(new Font("Arial Black", Font.BOLD, 40));
+                label1.setFont(new Font("Times New Roman", Font.BOLD, 40));
                 panel1.add(label1);
 
                 JPanel panel2 = new JPanel();
@@ -456,7 +456,7 @@ public class MainPanel
                 JPanel panel5 = new JPanel(new FlowLayout());
                 JPanel panel6 = new JPanel();
                 JLabel label2 = new JLabel("Категории менеджера");
-                label2.setFont(new Font("Bahnschrift", Font.BOLD, 30));
+                label2.setFont(new Font("Times New Roman", Font.BOLD, 30));
                 JButton button2 = new JButton("<html>Посмотреть<br> все заказы</html>");
                 JButton button3 = new JButton("<html>Сумма всех<br>интернет-заказов</html>");
                 JButton button4 = new JButton("<html>Количество<br>интернет-заказов</html>");
@@ -479,7 +479,7 @@ public class MainPanel
                         button5.setEnabled(true);
                         char[] password = passwordField.getPassword();
                         String enteredPassword = new String(password);
-                        if (enteredPassword.equals("123Qwerty"))
+                        if (enteredPassword.equals("123"))
                         {
                             panel4.setVisible(true);
                             panel3.setVisible(false);
@@ -496,7 +496,7 @@ public class MainPanel
                 });
                 JPanel panel_1 = new JPanel(new FlowLayout());
                 JLabel label_1 = new JLabel();
-                label_1.setFont(new Font("Calibri", Font.BOLD, 30));
+                label_1.setFont(new Font("Times New Roman", Font.BOLD, 30));
                 JButton button_1 = new JButton("Назад");
                 panel_1.add(label_1);
                 panel_1.add(button_1);
@@ -504,7 +504,7 @@ public class MainPanel
 
                 JPanel panel_2 = new JPanel(new FlowLayout());
                 JLabel label_2 = new JLabel();
-                label_2.setFont(new Font("Calibri", Font.BOLD, 30));
+                label_2.setFont(new Font("Times New Roman", Font.BOLD, 30));
                 JButton button_2 = new JButton("Назад");
                 panel_2.add(label_2);
                 panel_2.add(button_2);
@@ -512,7 +512,7 @@ public class MainPanel
 
                 JPanel panel_3 = new JPanel(new FlowLayout());
                 JLabel label_3 = new JLabel();
-                label_3.setFont(new Font("Calibri", Font.BOLD, 30));
+                label_3.setFont(new Font("Times New Roman", Font.BOLD, 30));
                 JButton button_3 = new JButton("Назад");
                 panel_3.add(label_3);
                 panel_3.add(button_3);
@@ -557,9 +557,9 @@ public class MainPanel
 
                         JPanel pn1 = new JPanel(new FlowLayout());
                         JLabel lb1 = new JLabel("Точно удалить интернет-заказы?");
-                        lb1.setFont(new Font("Calibri", Font.BOLD, 30));
+                        lb1.setFont(new Font("Times New Roman", Font.BOLD, 30));
                         JLabel lb2 = new JLabel();
-                        lb2.setFont(new Font("Calibri", Font.BOLD, 30));
+                        lb2.setFont(new Font("Times New Roman", Font.BOLD, 30));
                         JPanel pn2 = new JPanel();
                         JButton bt1 = new JButton("Да");
                         bt1.setPreferredSize(new Dimension(125, 60));

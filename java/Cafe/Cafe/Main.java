@@ -1,4 +1,4 @@
-package RestaurantMenu;
+package RestaurantMenu.Cafe;
 
 public class Main
 {
@@ -39,8 +39,6 @@ public class Main
             System.out.println("Позиция добавлена, (true/false): " + firstInternetOrder.add(new Dish("Rolls", "А dish made from rice, vinegar and seafood", 60)));
             System.out.println("Заказ добавлен, (true/false): " + orderManager.addOrder("Moscow, Tanuki", firstInternetOrder));
             System.out.println("Итоговая сумма всех интернет-заказов: " + orderManager.Price_total_InternetOrders());
-        /*for (int i = 0; i < orderManager.getInternetOrders().length; i++)
-            System.out.println(orderManager.total_Item_orders("Vodka"));*/
         }
         catch (Exception exc)
         {

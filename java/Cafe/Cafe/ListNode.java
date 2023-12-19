@@ -1,4 +1,4 @@
-package RestaurantMenu;
+package RestaurantMenu.Cafe;
 
 public class ListNode // Сама конструкция, которая будет реализовывать двухсвязанный список позиций в заказе
 {

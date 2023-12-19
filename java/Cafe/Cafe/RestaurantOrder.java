@@ -1,4 +1,4 @@
-package RestaurantMenu;
+package RestaurantMenu.Cafe;
 
 public class RestaurantOrder implements Order // Заказы в самом ресторане
 {

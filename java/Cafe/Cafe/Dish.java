@@ -1,10 +1,11 @@
-package RestaurantMenu;
-final class Drink implements Item // Класс, реализующий интерфейс Item
+package RestaurantMenu.Cafe;
+
+final class Dish implements Item // Класс, реализующий интерфейс Item
 {
     private final String name; // Закрытое поле, хранящее имя позиции в заказе
     private final String description; // Закрытое поле, хранящее описание позиции в заказе
     private final float price; // Закрытое поле, хранящее цену позиции в заказе
-    Drink(String name, String description) throws IllegalArgumentException
+    Dish(String name, String description) throws IllegalArgumentException
     {
         this.name = name;
         this.description = description;
@@ -12,7 +13,7 @@ final class Drink implements Item // Класс, реализующий инте
         if (name.isEmpty() || description.isEmpty())
             throw new IllegalArgumentException("Пустые входные данные");
     }
-    Drink(String name, String description, float price) throws IllegalArgumentException
+    Dish(String name, String description, float price) throws IllegalArgumentException
     {
         this.name = name;
         this.description = description;

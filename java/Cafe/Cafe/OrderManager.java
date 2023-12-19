@@ -1,4 +1,5 @@
-package RestaurantMenu;
+package RestaurantMenu.Cafe;
+
 import java.util.HashMap;
 public class OrderManager
 {

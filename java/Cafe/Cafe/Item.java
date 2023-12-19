@@ -1,4 +1,4 @@
-package RestaurantMenu;
+package RestaurantMenu.Cafe;
 
 public interface Item // Интерфейс, в котором содержатся переопределяемые в классах Dish и Drink методы
 {
