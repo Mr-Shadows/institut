@@ -9,6 +9,7 @@ import java.util.EventObject;
 
 public class   MainPanel
 {
+    ImageIcon iconca = new ImageIcon("C:\\Users\\Oleg\\Downloads\\1.jpg");
     private final Item[] items = new Item[15];
     public InternetOrder internetOrder;
     public OrderManager orderManager;
@@ -40,6 +41,8 @@ public class   MainPanel
             positions[i][1] = items[i].getDescription();
             positions[i][2] = items[i].getPrice() +" \u20BD";
         }
+
+        JLabel backgroung = new JLabel(iconca);
 
         JFrame jframe = new JFrame("Меню");
         jframe.setSize(800, 500);
@@ -433,6 +436,8 @@ public class   MainPanel
 
                 JPanel mainPanel1 = new JPanel(new FlowLayout());
 
+                boolean flag = true;
+
                 JPanel panel1 = new JPanel();
                 JLabel label1 = new JLabel("Введите пароль: ");
                 label1.setFont(new Font("Times New Roman", Font.BOLD, 40));
@@ -459,16 +464,13 @@ public class   MainPanel
                 label2.setFont(new Font("Times New Roman", Font.BOLD, 30));
                 JButton button2 = new JButton("<html>Посмотреть<br> все заказы</html>");
                 JButton button3 = new JButton("<html>Сумма всех<br>интернет-заказов</html>");
-                JButton button4 = new JButton("<html>Количество<br>интернет-заказов</html>");
                 JButton button5 = new JButton("<html>Удалить все<br>интернет-заказы</html>");
                 button2.setPreferredSize(new Dimension(150, 70));
                 button3.setPreferredSize(new Dimension(150, 70));
-                button4.setPreferredSize(new Dimension(150, 70));
                 button5.setPreferredSize(new Dimension(150, 70));
                 panel5.add(label2);
                 panel6.add(button2);
                 panel6.add(button3);
-                panel6.add(button4);
                 panel6.add(button5);
                 panel5.add(panel6);
 
@@ -483,6 +485,7 @@ public class   MainPanel
                         {
                             panel4.setVisible(true);
                             panel3.setVisible(false);
+
                             CardLayout cardLayout = (CardLayout) tempPanel1.getLayout();
                             cardLayout.show(tempPanel1, "Panel5");
                         }
@@ -498,25 +501,35 @@ public class   MainPanel
                 JLabel label_1 = new JLabel();
                 label_1.setFont(new Font("Times New Roman", Font.BOLD, 30));
                 JButton button_1 = new JButton("Назад");
+
+                panel5.setVisible(true);
                 panel_1.add(label_1);
                 panel_1.add(button_1);
                 panel_1.setVisible(false);
 
+                if (flag == true)
+                {
+                    panel5.setVisible(true);
+                }
                 JPanel panel_2 = new JPanel(new FlowLayout());
                 JLabel label_2 = new JLabel();
                 label_2.setFont(new Font("Times New Roman", Font.BOLD, 30));
                 JButton button_2 = new JButton("Назад");
+                button2.setVisible(true);
                 panel_2.add(label_2);
                 panel_2.add(button_2);
                 panel_2.setVisible(false);
+                panel5.setVisible(true);
 
                 JPanel panel_3 = new JPanel(new FlowLayout());
                 JLabel label_3 = new JLabel();
                 label_3.setFont(new Font("Times New Roman", Font.BOLD, 30));
                 JButton button_3 = new JButton("Назад");
+                button2.setVisible(true);
                 panel_3.add(label_3);
                 panel_3.add(button_3);
                 panel_3.setVisible(false);
+                panel5.setVisible(true);
 
                 button2.addActionListener(new ActionListener() {
                     @Override
@@ -529,6 +542,8 @@ public class   MainPanel
                         if (orderManager == null)
                             label_1.setText("Заказа нет");
                         else label_1.setText("Всего интернет-заказов: " + orderManager.getInternetOrders().length);
+
+
                     }
                 });
                 button3.addActionListener(new ActionListener() {
@@ -542,7 +557,9 @@ public class   MainPanel
                         if (orderManager == null)
                             label_2.setText("Заказа нет");
                         else label_2.setText("Сумма всех интернет-заказов: " + orderManager.Price_total_InternetOrders());
+
                     }
+
                 });
                 button5.addActionListener(new ActionListener() {
                     @Override
@@ -590,25 +607,35 @@ public class   MainPanel
                         fr.add(pn1);
                     }
                 });
+
+
                 button_1.addActionListener(new ActionListener() {
                     @Override
-                    public void actionPerformed(ActionEvent e) {
+                    public void actionPerformed(ActionEvent e ) {
                         panel_1.setVisible(false);
-                        panel5.setVisible(true);
+                        CardLayout cardLayout = (CardLayout) tempPanel1.getLayout();
+                        cardLayout.show(tempPanel1, "Panel5");
                     }
                 });
+
                 button_2.addActionListener(new ActionListener() {
+
                     @Override
                     public void actionPerformed(ActionEvent e) {
+
                         panel_2.setVisible(false);
-                        panel5.setVisible(true);
+                        CardLayout cardLayout = (CardLayout) tempPanel1.getLayout();
+                        cardLayout.show(tempPanel1, "Panel5");
+
+
                     }
                 });
                 button_3.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         panel_3.setVisible(false);
-                        panel5.setVisible(true);
+                        CardLayout cardLayout = (CardLayout) tempPanel1.getLayout();
+                        cardLayout.show(tempPanel1, "Panel5");
                     }
                 });
                 mainPanel1.add(panel1);
@@ -633,6 +660,7 @@ public class   MainPanel
         });
         mainPanel.add(panel1);
         mainPanel.add(panel2);
+        mainPanel.add(backgroung);
         tempPanel.add(mainPanel, "MainPanel");
         tempPanel.add(panel3);
         tempPanel.add(panel4);
