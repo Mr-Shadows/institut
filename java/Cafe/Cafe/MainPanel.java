@@ -1,15 +1,18 @@
 package RestaurantMenu.Cafe;
 
+import RestaurantMenu.Cafe.*;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.EventObject;
+import java.util.Vector;
 
-public class   MainPanel
+public class MainPanel
 {
-    ImageIcon iconca = new ImageIcon("C:\\Users\\Oleg\\Downloads\\1.jpg");
+    private String font = "Consolas";
     private final Item[] items = new Item[15];
     public InternetOrder internetOrder;
     public OrderManager orderManager;
@@ -23,16 +26,17 @@ public class   MainPanel
         items[5] = new Dish("Креветки в кляре", "Сытное мясо в хрустящей панировке", 100);
         items[6] = new Dish("Роллы", "Блюдо из риса, уксуса и морепродуктов", 1050);
         items[7] = new Dish("Пицца", "Итальянское блюдо с начинкой сверху", 1500);
-        items[8] = new Dish("ЧЫзбургер", "Гамбургер с сыром", 600);
+        items[8] = new Dish("Чизбургер", "Гамбургер с сыром", 600);
         items[9] = new Drink("Эспрессо", "Бодрящий кофе с сахаром", 200);
-        items[10] = new Drink("Добрый Апельсин", "Газированный напиток со вкусом апельсина", 175);
-        items[11] = new Drink("Добрый Кола", "Газированный безалкогольный напиток", 175);
-        items[12] = new Drink("Чай", "Прохладный, вкусный зеленый чай", 175);
+        items[10] = new Drink("Фанта", "Газированный напиток со вкусом апельсина", 175);
+        items[11] = new Drink("Coca-Cola", "Газированный безалкогольный напиток", 175);
+        items[12] = new Drink("Чай холодный", "Прохладный, вкусный зеленый чай", 175);
         items[13] = new Drink("Бурбон", "Сильнокрепкий алкогольный напиток", 1500);
-        items[14] = new Drink("ВЫЫЫЫСКИ", "Моё любимое", 850);
+        items[14] = new Drink("Текила", "Крепкий алкогольный напиток", 850);
     }
     MainPanel()
     {
+        orderManager = new OrderManager();
         construct();
         String[][] positions = new String[items.length][3];
         for (int i = 0; i < items.length; i++)
@@ -41,8 +45,6 @@ public class   MainPanel
             positions[i][1] = items[i].getDescription();
             positions[i][2] = items[i].getPrice() +" \u20BD";
         }
-
-        JLabel backgroung = new JLabel(iconca);
 
         JFrame jframe = new JFrame("Меню");
         jframe.setSize(800, 500);
@@ -58,7 +60,7 @@ public class   MainPanel
 
         JPanel panel1 = new JPanel();
         JLabel label1 = new JLabel("Главное меню");
-        label1.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        label1.setFont(new Font(font, Font.BOLD, 30));
         panel1.add(label1);
 
         JPanel panel2 = new JPanel();
@@ -90,14 +92,18 @@ public class   MainPanel
         panel3.setLayout(new BoxLayout(panel3, BoxLayout.Y_AXIS));
         JLabel label2 = new JLabel("Оформить новый заказ?");
         label2.setAlignmentX(Component.CENTER_ALIGNMENT);
-        label2.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        label2.setFont(new Font(font, Font.BOLD, 30));
         JPanel Btpanel = new JPanel();
         JButton button5 = new JButton("Да");
         JButton button6 = new JButton("Нет");
+        JTextField addressField = new JTextField(); // JTextField for entering the address
+        addressField.setPreferredSize(new Dimension(200, 30));
+
         button5.setPreferredSize(new Dimension(100, 75));
         button6.setPreferredSize(new Dimension(100, 75));
         Btpanel.add(button5);
         Btpanel.add(button6);
+        Btpanel.add(addressField);
         panel3.add(label2);
         panel3.add(Btpanel);
         panel3.setVisible(false);
@@ -105,7 +111,7 @@ public class   MainPanel
         JPanel panel4 = new JPanel(new BorderLayout());
         JLabel label3 = new JLabel("<html>В нашем ресторане вы сможете попробовать изысканные блюда из разных<br>стран всего мира. Наши шеф-повара имеют многолетний стаж работы.</html>");
         label3.setHorizontalAlignment(SwingConstants.CENTER);
-        label3.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        label3.setFont(new Font(font, Font.BOLD, 20));
         JPanel pn1 = new JPanel();
         pn1.add(label3);
         JButton button7 = new JButton("Назад");
@@ -135,7 +141,8 @@ public class   MainPanel
 
         JPanel panel5 = new JPanel(new BorderLayout());
         JLabel label4 = new JLabel("Меню состоит из 15 позиций, и содержит различные блюда всего мира");
-        label4.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        JLabel adresslabel = new JLabel();
+        label4.setFont(new Font(font, Font.BOLD, 20));
         label4.setOpaque(true);
         label4.setBackground(Color.WHITE);
         JPanel addpanel = new JPanel();
@@ -159,6 +166,7 @@ public class   MainPanel
         }
         JScrollPane scrollPane1 = new JScrollPane(table1);
         panel5.add(label4, BorderLayout.NORTH);
+        panel5.add(adresslabel, BorderLayout.NORTH);
         panel5.add(scrollPane1);
         panel5.add(addpanel, BorderLayout.SOUTH);
         panel5.setVisible(false);
@@ -168,7 +176,7 @@ public class   MainPanel
         JLabel label5 = new JLabel("Корзина пока пуста");
         emptyPanel.add(label5);
         emptyPanel.setVisible(false);
-        label5.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        label5.setFont(new Font(font, Font.BOLD, 30));
         JPanel backpanel1 = new JPanel(new FlowLayout());
         JButton backbutton1 = new JButton("Назад");
         JButton button8 = new JButton("Оплатить заказ");
@@ -202,6 +210,7 @@ public class   MainPanel
                     rowData[2] = table1.getValueAt(selectedRow, 2);
                     internetOrder.add(items[selectedRow]);
                     model.addRow(rowData);
+                    //System.out.println(items[selectedRow].getName());
                 }
             }
         });
@@ -265,7 +274,7 @@ public class   MainPanel
 
                 frame.setVisible(true); // Делает видимым само окно
                 JLabel label = new JLabel("Действительно выйти?");
-                label.setFont(new Font("Times New Roman", Font.ITALIC, 25));
+                label.setFont(new Font(font, Font.ITALIC, 25));
                 frame.add(label, BorderLayout.NORTH);
                 JPanel panel = new JPanel(new FlowLayout());
                 JButton button1 = new JButton("Да");
@@ -290,7 +299,7 @@ public class   MainPanel
         button5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int adr = 65;
+                String address = addressField.getText();
                 button8.setEnabled(true); // Запретить нажатие кнопки
                 button9.setEnabled(true);
                 panel5.setVisible(true);
@@ -298,10 +307,11 @@ public class   MainPanel
                 if (internetOrder == null)
                 {
                     internetOrder = new InternetOrder();
-                    orderManager = new OrderManager();
+
                     try
                     {
-                        orderManager.addOrder(++adr + "AAA", internetOrder);
+                        orderManager.addOrder(address, internetOrder);
+                        adresslabel.setText(address);
                     } catch (Exception ex)
                     {
                         throw new RuntimeException(ex);
@@ -339,7 +349,7 @@ public class   MainPanel
                 JPanel mainPN = new JPanel();
                 JPanel mainPanel1 = new JPanel(new BorderLayout());
                 JLabel label1 = new JLabel("Итоговая стоимость заказа: " + internetOrder.priceTotal() + " \u20BD");
-                label1.setFont(new Font("Times New Roman", Font.ITALIC, 30));
+                label1.setFont(new Font(font, Font.ITALIC, 30));
                 JPanel panel1 = new JPanel(new FlowLayout());
                 JButton button1 = new JButton("Оплатить");
                 JButton button2 = new JButton("Закрыть");
@@ -357,7 +367,7 @@ public class   MainPanel
                     mainPanel1.setVisible(false);
                     panel2.setVisible(true);
                 }
-                label3.setFont(new Font("Times New Roman", Font.BOLD, 30));
+                label3.setFont(new Font(font, Font.BOLD, 30));
                 button1.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -402,7 +412,7 @@ public class   MainPanel
                 JPanel mainpanel2 = new JPanel(new FlowLayout());
                 JLabel label1 = new JLabel("Заказ удалён");
                 label1.setText((internetOrder == null) ? "Заказ не оформлен" : "Успешно удалено");
-                label1.setFont(new Font("Times New Roman", Font.BOLD, 20));
+                label1.setFont(new Font(font, Font.BOLD, 20));
                 DefaultTableModel model1 = (DefaultTableModel) table2.getModel();
                 model1.setRowCount(0);
                 internetOrder = null;
@@ -422,25 +432,24 @@ public class   MainPanel
             }
         });
         jMenuItem_1.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                JFrame frame1 = new JFrame("Менеджер ресторана");
-                frame1.setSize(700, 350);
+                JFrame meneger = new JFrame("Менеджер ресторана");
+                meneger.setSize(700, 350);
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-                int centerX = (int) (screenSize.getWidth() - frame1.getWidth()) / 2;
-                int centerY = (int) (screenSize.getHeight() - frame1.getHeight()) / 2;
-                frame1.setLocation(centerX, centerY);
-                frame1.setVisible(true);
+                int centerX = (int) (screenSize.getWidth() - meneger.getWidth()) / 2;
+                int centerY = (int) (screenSize.getHeight() - meneger.getHeight()) / 2;
+                meneger.setLocation(centerX, centerY);
+                meneger.setVisible(true);
                 JPanel tempPanel1 = new JPanel(new CardLayout());
 
                 JPanel mainPanel1 = new JPanel(new FlowLayout());
 
-                boolean flag = true;
-
                 JPanel panel1 = new JPanel();
                 JLabel label1 = new JLabel("Введите пароль: ");
-                label1.setFont(new Font("Times New Roman", Font.BOLD, 40));
+                label1.setFont(new Font(font, Font.BOLD, 40));
                 panel1.add(label1);
 
                 JPanel panel2 = new JPanel();
@@ -461,7 +470,7 @@ public class   MainPanel
                 JPanel panel5 = new JPanel(new FlowLayout());
                 JPanel panel6 = new JPanel();
                 JLabel label2 = new JLabel("Категории менеджера");
-                label2.setFont(new Font("Times New Roman", Font.BOLD, 30));
+                label2.setFont(new Font(font, Font.BOLD, 30));
                 JButton button2 = new JButton("<html>Посмотреть<br> все заказы</html>");
                 JButton button3 = new JButton("<html>Сумма всех<br>интернет-заказов</html>");
                 JButton button5 = new JButton("<html>Удалить все<br>интернет-заказы</html>");
@@ -485,7 +494,6 @@ public class   MainPanel
                         {
                             panel4.setVisible(true);
                             panel3.setVisible(false);
-
                             CardLayout cardLayout = (CardLayout) tempPanel1.getLayout();
                             cardLayout.show(tempPanel1, "Panel5");
                         }
@@ -499,37 +507,38 @@ public class   MainPanel
                 });
                 JPanel panel_1 = new JPanel(new FlowLayout());
                 JLabel label_1 = new JLabel();
-                label_1.setFont(new Font("Times New Roman", Font.BOLD, 30));
+                label_1.setFont(new Font("Calibri", Font.BOLD, 30));
                 JButton button_1 = new JButton("Назад");
-
-                panel5.setVisible(true);
                 panel_1.add(label_1);
-                panel_1.add(button_1);
+                panel_1.add(button_1, BorderLayout.SOUTH);
                 panel_1.setVisible(false);
 
-                if (flag == true)
-                {
-                    panel5.setVisible(true);
-                }
+                DefaultTableModel model = new DefaultTableModel();
+                model.addColumn("Адрес");
+                model.addColumn("Заказ");
+                // Создаем JTable с использованием DefaultTableModel
+                JTable table = new JTable(model);
+
+                // Создаем JScrollPane для JTable
+                JScrollPane scrollPane = new JScrollPane(table);
+                panel_1.add(scrollPane, BorderLayout.CENTER);
+
+
                 JPanel panel_2 = new JPanel(new FlowLayout());
                 JLabel label_2 = new JLabel();
-                label_2.setFont(new Font("Times New Roman", Font.BOLD, 30));
+                label_2.setFont(new Font("Calibri", Font.BOLD, 30));
                 JButton button_2 = new JButton("Назад");
-                button2.setVisible(true);
                 panel_2.add(label_2);
                 panel_2.add(button_2);
                 panel_2.setVisible(false);
-                panel5.setVisible(true);
 
                 JPanel panel_3 = new JPanel(new FlowLayout());
                 JLabel label_3 = new JLabel();
-                label_3.setFont(new Font("Times New Roman", Font.BOLD, 30));
+                label_3.setFont(new Font("Calibri", Font.BOLD, 30));
                 JButton button_3 = new JButton("Назад");
-                button2.setVisible(true);
                 panel_3.add(label_3);
                 panel_3.add(button_3);
                 panel_3.setVisible(false);
-                panel5.setVisible(true);
 
                 button2.addActionListener(new ActionListener() {
                     @Override
@@ -541,9 +550,34 @@ public class   MainPanel
                         panel1.setVisible(false);
                         if (orderManager == null)
                             label_1.setText("Заказа нет");
-                        else label_1.setText("Всего интернет-заказов: " + orderManager.getInternetOrders().length);
+                        else {
+                            label_1.setText("Всего интернет-заказов: " + orderManager.getInternetOrders().length);
+                            String[] order = orderManager.getOrdersArray();
+                            for (int i = 0; i < table2.getColumnCount(); i++)
+                            {
+                                DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+                                centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+                                table2.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+                                Class<?> colClass = table2.getColumnClass(i);
+                                DefaultCellEditor editor = new DefaultCellEditor(new JTextField()) {
+                                    @Override
+                                    public boolean isCellEditable(EventObject e) {
+                                        return false;
+                                    }
+                                };
+                                table2.setDefaultEditor(colClass, editor);
+                            }
+                            for (String value : order) {
+                                Item[] items = orderManager.getOrder(value).GetItem();
+                                String string = "";
+                                for (Item item : items)
+                                {
+                                    string += item.getName() + ", ";
+                                }
+                                addRow(model, value, string);
+                            }
 
-
+                        }
                     }
                 });
                 button3.addActionListener(new ActionListener() {
@@ -557,9 +591,7 @@ public class   MainPanel
                         if (orderManager == null)
                             label_2.setText("Заказа нет");
                         else label_2.setText("Сумма всех интернет-заказов: " + orderManager.Price_total_InternetOrders());
-
                     }
-
                 });
                 button5.addActionListener(new ActionListener() {
                     @Override
@@ -574,9 +606,9 @@ public class   MainPanel
 
                         JPanel pn1 = new JPanel(new FlowLayout());
                         JLabel lb1 = new JLabel("Точно удалить интернет-заказы?");
-                        lb1.setFont(new Font("Times New Roman", Font.BOLD, 30));
+                        lb1.setFont(new Font(font, Font.BOLD, 30));
                         JLabel lb2 = new JLabel();
-                        lb2.setFont(new Font("Times New Roman", Font.BOLD, 30));
+                        lb2.setFont(new Font(font, Font.BOLD, 30));
                         JPanel pn2 = new JPanel();
                         JButton bt1 = new JButton("Да");
                         bt1.setPreferredSize(new Dimension(125, 60));
@@ -607,36 +639,27 @@ public class   MainPanel
                         fr.add(pn1);
                     }
                 });
-
-
                 button_1.addActionListener(new ActionListener() {
                     @Override
-                    public void actionPerformed(ActionEvent e ) {
+                    public void actionPerformed(ActionEvent e) {
                         panel_1.setVisible(false);
                         CardLayout cardLayout = (CardLayout) tempPanel1.getLayout();
                         cardLayout.show(tempPanel1, "Panel5");
                     }
                 });
-
                 button_2.addActionListener(new ActionListener() {
-
                     @Override
                     public void actionPerformed(ActionEvent e) {
-
                         panel_2.setVisible(false);
                         CardLayout cardLayout = (CardLayout) tempPanel1.getLayout();
-                        cardLayout.show(tempPanel1, "Panel5");
-
-
-                    }
+                        cardLayout.show(tempPanel1, "Panel5");                    }
                 });
                 button_3.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         panel_3.setVisible(false);
                         CardLayout cardLayout = (CardLayout) tempPanel1.getLayout();
-                        cardLayout.show(tempPanel1, "Panel5");
-                    }
+                        cardLayout.show(tempPanel1, "Panel5");                    }
                 });
                 mainPanel1.add(panel1);
                 mainPanel1.add(panel2);
@@ -647,7 +670,7 @@ public class   MainPanel
 
                 tempPanel1.add(mainPanel1);
                 tempPanel1.add(panel5, "Panel5");
-                frame1.add(tempPanel1);
+                meneger.add(tempPanel1);
             }
         });
         jMenuItem_2.addActionListener(new ActionListener() {
@@ -660,13 +683,18 @@ public class   MainPanel
         });
         mainPanel.add(panel1);
         mainPanel.add(panel2);
-        mainPanel.add(backgroung);
         tempPanel.add(mainPanel, "MainPanel");
         tempPanel.add(panel3);
         tempPanel.add(panel4);
         tempPanel.add(panel5);
         tempPanel.add(panel6);
         jframe.add(tempPanel, BorderLayout.CENTER);
+    }
+    private static void addRow(DefaultTableModel model, String name, String address) {
+        Vector<Object> row = new Vector<>();
+        row.add(name);
+        row.add(address);
+        model.addRow(row);
     }
     public static void main(String[] args)
     {

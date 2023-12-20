@@ -1,12 +1,44 @@
 package RestaurantMenu.Cafe;
 
+import RestaurantMenu.Cafe.Order;
+
 import java.util.HashMap;
+import java.util.Map;
+
 public class OrderManager
 {
     private final HashMap<String, Order> address_order; // Хранилище, представляющее собой пару: ключ - значение, указываемое в аргументах типов
-    OrderManager()
+    public OrderManager()
     {
         this.address_order = new HashMap<>();
+    }
+    // Метод для получения строки из HashMap
+    public String[] getOrdersArray() {
+        return address_order.keySet().toArray(new String[0]);
+        // Получаем размер HashMap
+//        int size = address_order.size();
+//
+//        // Создаем массив строк с размером, равным размеру HashMap
+//        String[] ordersArray = new String[size];
+//
+//        // Получаем множество записей (ключ-значение) из HashMap
+//        // и перебираем его для заполнения массива строк
+//        int index = 0;
+//        for (Map.Entry<String, Order> entry : address_order.entrySet()) {
+//            // Получаем Order объект из записи
+//            Order order = entry.getValue();
+//
+//            // Преобразуем Order в строку (предположим, что у Order есть метод toString())
+//            String orderString = order.toString();
+//
+//            // Записываем строку в массив
+//            ordersArray[index] = orderString;
+//
+//            // Увеличиваем индекс для следующей итерации
+//            index++;
+//        }
+//
+//        return ordersArray;
     }
     public boolean addOrder(String address, Order order) throws Exception // Добавление заказа в хеш-таблицу
     {
