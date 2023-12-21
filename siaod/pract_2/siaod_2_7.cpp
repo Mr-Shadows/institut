@@ -10,7 +10,7 @@ int main() {
     string saveName;
     while (wh)
     {
-        cout << "\nДействия:" 
+        cout << "\nActions:"
             << "\n\t0 - Stopping the input"
             << "\n\t1 - Add new data"
             << "\n\t2 - translate.txt in .bin(binary file)"
