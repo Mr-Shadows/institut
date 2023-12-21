@@ -1,4 +1,1 @@
-"C:\Program Files\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.2.2/bin/ninja/win/x64/ninja.exe" -G Ninja -S "C:\Users\Oleg\Desktop\Folder\vuz\kurs 2 semestr 1\forGitHub\institut\siaod\task2" -B "C:\Users\Oleg\Desktop\Folder\vuz\kurs 2 semestr 1\forGitHub\institut\siaod\task2\cmake-build-debug"
--- Configuring done (0.1s)
--- Generating done (0.0s)
--- Build files have been written to: C:/Users/Oleg/Desktop/Folder/vuz/kurs 2 semestr 1/forGitHub/institut/siaod/task2/cmake-build-debug
+CMakeLists.txt not found in C:\Users\Oleg\Desktop\Folder\vuz\kurs2semestr1\forGitHub\institut\siaod\task2 Select CMakeLists.txt
